@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Ingrese a su perfil
+ {% endblock %}
+
+ {% block content %}
+
+ <form method="post" >
+     {% csrf_token %}     
+     {{ form.as_p}}
+     <button type="submit"> Ingrear </button> 
+ </form> 
+
+<a class="btn btn-primary" href="{% url 'registro'%}"> <font color="blue">Registrar </font></a>
+
+ {% endblock %}

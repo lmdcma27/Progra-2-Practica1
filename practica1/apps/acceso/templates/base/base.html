@@ -1,0 +1,22 @@
+<DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title%} Document  {% endblock %} </title>
+</head>
+<body>
+    {% block header %}
+    <h3>  Encabezado </h3> 
+    {% endblock %}
+
+    {% block content %}
+    <h5> este es el contenido del arhcivo base </h5>
+    {% endblock%}
+
+    {% block footer %}
+    <h5> footer </h5>
+    {% endblock%}
+
+</body>
+
+</html>

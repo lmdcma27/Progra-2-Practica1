@@ -1,0 +1,27 @@
+
+{% block content %}
+
+<h2> Archivos Subidos </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Nombre </th>
+            <th> Archivos </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for a in arch %}
+    {% if a.name == n %}
+        <tr>
+            <td> {{ a.name }} </td>
+            <td> 
+            <a href="{{ a.archivo.url }}" class="btn btn-primary btn-sm" target="_blank">
+            Editar Archivo
+            </a>
+             </td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
