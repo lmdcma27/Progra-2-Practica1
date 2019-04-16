@@ -5,13 +5,30 @@ class archivosform(forms.ModelForm):
     class Meta:
         model = Archivos
 
-        fields = ('name', 'password', 'archivo')
+        fields = ('propietario', 'password', 'archivo')
 
         labels = {
-            'name': 'Nombre',
+            'propietario': 'Nombre',
             'password': 'Contraseña',
             'archivo': 'Archivo',
         }
         widgets = {
-            'password': forms.PasswordInput(attrs={'class':'control-form'}),
+            'password': forms.PasswordInput(attrs={'class':'form-control'}),                        
+        }
+
+class editarform(forms.ModelForm):
+    class Meta:
+        model = Archivos
+        
+        fields = [            
+            'texto',
+        ]
+        
+        labels = {                                    
+            'texto': '',        
+        }
+
+        widgets = {            
+            'texto': forms.Textarea(attrs={'class':'form-control'}),
+           
         }

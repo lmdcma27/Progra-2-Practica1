@@ -11,12 +11,12 @@
     </thead>
     <tbody>
     {% for a in arch %}
-    {% if a.name == n %}
+    {% if a.propietario.nombre == n %}
         <tr>
-            <td> {{ a.name }} </td>
+            <td> {{ a.archivo.name }} </td>
             <td> 
-            <a href="{{ a.archivo.url }}" class="btn btn-primary btn-sm" target="_blank">
-            Editar Archivo
+            <a href="{% url 'editar' a.archivo.name %}" title="Editar Archivo" class="btn btn-primary btn-sm" target="_blank">
+            Editar
             </a>
              </td>
         </tr>

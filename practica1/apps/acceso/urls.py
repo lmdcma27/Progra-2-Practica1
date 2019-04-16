@@ -5,3 +5,4 @@ urlpatterns = [
    path('acceso/', views.acceso, name = 'acceso'),
    path('<str:nombre>', views.perfil, name = 'perfil'),
 ]
+   

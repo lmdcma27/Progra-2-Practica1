@@ -5,7 +5,7 @@ from django.db import models
 class Usuario(models.Model):
     nombre = models.CharField(max_length=50, primary_key=True)
     carnet = models.CharField(max_length=9)
-    correo = models.EmailField(max_length=50)
+    correo = models.CharField(max_length=100)
     cui = models.CharField(max_length=30)
     contra = models.CharField(max_length=50)
     carrera = ( ('00', 'Licenciatura en Matemática'),
