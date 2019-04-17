@@ -13,7 +13,7 @@ class archivosform(forms.ModelForm):
             'archivo': 'Archivo',
         }
         widgets = {
-            'password': forms.PasswordInput(attrs={'class':'form-control'}),                        
+            'password': forms.PasswordInput(attrs={'class':'form-control'}),  
         }
 
 class editarform(forms.ModelForm):
@@ -29,6 +29,6 @@ class editarform(forms.ModelForm):
         }
 
         widgets = {            
-            'texto': forms.Textarea(attrs={'class':'form-control'}),
+            'texto': forms.Textarea(attrs={'class':'form-control', 'cols': 100, 'rows': 14}),
            
         }
