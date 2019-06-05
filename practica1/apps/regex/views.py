@@ -221,8 +221,7 @@ class Algoritmo:
 			if cadena[contador] in self.alfanumerico:				
 				
 				if contador == 0:									
-					estados = self.concatenacion1( cadena[contador] )					
-					print(estados)
+					estados = self.concatenacion1( cadena[contador] )										
 					qinicial = estados[0]
 					inicial = estados[0]
 					qfinal = estados[1]	
@@ -327,8 +326,7 @@ class Algoritmo:
 								contador += 1	
 						else:
 							qfinal = estados[1]
-					except IndexError:											
-						print("Cadena Termianda")
+					except IndexError:																	
 						break
 
 					'''else:
@@ -357,15 +355,13 @@ class Algoritmo:
 
 					
 			except IndexError:
-				print("Cadena terminada")
+				pass
 		try:
 
-			if contador >= len(cadena):	
-				print(self.transiciones)						
+			if contador >= len(cadena):										
 				return inicial, qfinal, contador	
 		except UnboundLocalError:
-			if contador >= len(cadena):	
-				print(self.transiciones)						
+			if contador >= len(cadena):											
 				return qinicial, qfinal, contador	
 			
 
