@@ -162,6 +162,7 @@ def archivos_subidos(request, nombre):
     return render(request, 'archivos/archivos_subidos.html',
      {'arch':arch, 'n': n})
 
+
 def editar(request, documento):
     f = Archivos.objects.all()
     
@@ -169,10 +170,11 @@ def editar(request, documento):
     for x in f:
         if x.archivo.name == documento:
             aux = x
-    cadena_analizada = automata(aux.archivo.path)
+    cadena_analizada = automata(aux.archivo.path)    
     string = aux.texto
     lista1 = cadena_analizada[0]
     lista2 = cadena_analizada[1]
+    
     cientificos = ['Hilbert', 'Turing', 'Euler', 'Fermat', 'Pitágoras',
                     'Boole', 'Cantor', 'Perelman', 'Newton', 'Einstein','Galileo']
     if request.method == 'GET':       

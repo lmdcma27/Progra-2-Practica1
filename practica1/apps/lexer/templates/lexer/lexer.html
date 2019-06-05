@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ prueba.as_p }}
+<button type="submit" class="btn btn-primary"> Realizar Análisis Léxico</button>
+</form>
+{% endblock  %}
+
+
+<ol id="oculto1">
+{% for retazo1 in lista1 %}
+    <li> {{ retazo1 }} </li>
+{% endfor %}
+</ol>
+<ol id="oculto2">
+{% for retazo2 in lista2 %}
+    <li> {{ retazo2 }} </li>
+{% endfor %}
+</ol>
+
+
+<form>
+     <div id="parrafo"></div>
+</form>
+
+<script>
+        var texto = document.getElementById("parrafo");        
+        var lista1 = document.getElementsByTagName("li");
+        longitud = lista1.length;
+
+        for(i=0;i< longitud ;i++){
+            cadena1 = lista1[longitud + i].innerHTML
+            cadena2 = lista1[i].innerHTML
+            cadena2 = lista1[i].innerHTML.fontcolor(cadena1);
+            texto.innerHTML = texto.innerHTML + cadena2;    
+        }
+
+        var ocultar1 = document.getElementById('oculto1');
+        ocultar1.style.display = 'none';
+        var ocultar2 = document.getElementById('oculto2');
+        ocultar2.style.display = 'none';
+        texto.style.display = 'none';
+        fotos.style.display = 'none';
+
+        var Mostrar = function(){
+          texto.style.display = 'block'; 
+          fotos.style.display = 'block'; 
+           
+        }
+
+
+
+    </script>

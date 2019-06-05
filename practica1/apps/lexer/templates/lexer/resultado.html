@@ -1,0 +1,47 @@
+
+{% block content%}
+<h2> Las palabras en azul son cadenas aceptadas, mientras las negras son cadenas rechazadas por la expresion regular: {{ cadena }}. </h2> 
+
+<br>
+<p></p>
+<p></p>
+
+<ol id="oculto1">
+{% for retazo1 in lista1%}
+    <li> {{ retazo1 }} </li>
+{% endfor %}
+</ol>
+
+<ol id="oculto2">
+{% for retazo2 in lista2%}
+    <li> {{ retazo2 }} </li>
+{% endfor %}
+</ol>
+<form>
+     <div id="parrafo"></div>
+</form>
+
+
+
+
+    <script>
+        var texto = document.getElementById("parrafo");        
+        var lista1 = document.getElementsByTagName("li");
+        longitud = lista1.length/2;                
+        for(i=0;i< longitud ;i++){
+            cadena1 = lista1[longitud + i].innerHTML
+            cadena2 = lista1[i].innerHTML                
+            cadena2 = lista1[i].innerHTML.fontcolor(cadena1);
+            texto.innerHTML = texto.innerHTML + cadena2;    
+        }
+        var ocultar1 = document.getElementById('oculto1');
+        ocultar1.style.display = 'none';
+        var ocultar2 = document.getElementById('oculto2');
+        ocultar2.style.display = 'none';
+        texto.style.display = 'block';        
+
+
+
+    </script>
+
+{% endblock %}

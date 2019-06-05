@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'apps.registro',
     'apps.acceso',
     'apps.archivos',
-    
+    'apps.regex', 
+    'apps.lexer', 
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/' 
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'apps', 'archivos')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)))
 
 
 
