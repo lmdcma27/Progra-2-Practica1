@@ -64,7 +64,7 @@ ROOT_URLCONF = 'practica1.urls'
 TEMPLATES = [   
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'practica1/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'apps/registro/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
