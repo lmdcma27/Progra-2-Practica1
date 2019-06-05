@@ -461,11 +461,7 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(valores)		
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
-
-	g = Graph(format='png')
-	gautomata.format = 'svg'
-	gautomata.render(view=True)	
-
+		
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
