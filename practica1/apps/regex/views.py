@@ -454,7 +454,6 @@ class Algoritmo:
 
 def grafica(diccionario, conjunto_aceptacion):
 
-	print(conjunto_aceptacion)
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
@@ -471,7 +470,6 @@ def grafica(diccionario, conjunto_aceptacion):
 	gautomata.format = 'svg'
 	gautomata.render(view=True)	
 
-	print(conjunto_aceptacion)
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
@@ -486,7 +484,7 @@ def grafica(diccionario, conjunto_aceptacion):
 
 	g = Graph(format='png')
 	gautomata.format = 'png'
-	gautomata.render()		
+	gautomata.render(view=True)		
 
 def verificar(cadena):
 	estado = True
