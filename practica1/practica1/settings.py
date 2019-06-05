@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_w6u!xg!403w&tpn@7_negwj1r&&wzq7#m5c2hh83478+&qg6='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True 
 
 ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'smtp.gmail.com'
@@ -35,6 +35,7 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
+    'practica1',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
