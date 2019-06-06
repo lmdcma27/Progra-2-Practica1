@@ -228,10 +228,8 @@ class Algoritmo:
 					contador += 1					
 				else:
 					estados = self.concatenacion2( cadena[contador], qfinal )	
-					qinicial = estados[0]									
-					print(qfinal)
-					contador += 1
-					print(estados)									
+					qinicial = estados[0]													
+					contador += 1				
 
 				try:
 					if cadena[contador] == "*":										
@@ -303,26 +301,26 @@ class Algoritmo:
 								estados = self.clausura2(qfinal, qinicial1, qfinal1)															
 								qinicial = estados[0]							
 								qfinal = estados[1]
-								contador += 1
+								contador = contador + 1
 							except UnboundLocalError:
 								qfinal  = estados[1]
 								estados = self.clausura2(qfinal, qinicial1, qfinal1)															
 								qinicial = estados[0]							
 								qfinal = estados[1]
-								contador += 1													
+								contador = contador + 1													
 
 						elif cadena[contador] == "+":
 							try:
 								estados = self.suma2(qfinal, qinicial1, qfinal1)
 								qinicial = estados[0]
 								qfinal = estados[1]
-								contador += 1
+								contador = contador + 1
 							except UnboundLocalError:
 								qfinal  = estados[1]
 								estados = self.suma2(qfinal, qinicial1, qfinal1)
 								qinicial = estados[0]
 								qfinal = estados[1]
-								contador += 1	
+								contador = contador + 1	
 						else:
 							qfinal = estados[1]
 					except IndexError:																	
