@@ -221,8 +221,7 @@ class Algoritmo:
 			if cadena[contador] in self.alfanumerico:				
 				
 				if contador == 0:									
-					estados = self.concatenacion1( cadena[contador] )					
-					print(estados)
+					estados = self.concatenacion1( cadena[contador] )										
 					qinicial = estados[0]
 					inicial = estados[0]
 					qfinal = estados[1]	
@@ -327,8 +326,7 @@ class Algoritmo:
 								contador += 1	
 						else:
 							qfinal = estados[1]
-					except IndexError:											
-						print("Cadena Termianda")
+					except IndexError:																	
 						break
 
 					'''else:
@@ -357,15 +355,13 @@ class Algoritmo:
 
 					
 			except IndexError:
-				print("Cadena terminada")
+				pass
 		try:
 
-			if contador >= len(cadena):	
-				print(self.transiciones)						
+			if contador >= len(cadena):										
 				return inicial, qfinal, contador	
 		except UnboundLocalError:
-			if contador >= len(cadena):	
-				print(self.transiciones)						
+			if contador >= len(cadena):											
 				return qinicial, qfinal, contador	
 			
 
@@ -465,11 +461,15 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(valores)		
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
+<<<<<<< HEAD
 
 	g= Graph(format='png')
 	gautomata.format = 'png'
 	gautomata.render(view=True)	
 
+=======
+		
+>>>>>>> 30b7dd33a9a34f56884b30772c8953f8c07a1a8e
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
