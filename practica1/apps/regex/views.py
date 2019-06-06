@@ -235,8 +235,7 @@ class Algoritmo:
 					if cadena[contador] == "*":										
 						estados = self.prueba1(cadena[contador - 1], qinicial, qfinal)						
 						contador += 1
-				except IndexError:
-					print("cadena terminada")
+				except IndexError:					
 					contador += 1
 					break
 					
