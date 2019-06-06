@@ -517,7 +517,7 @@ def verificar(cadena):
 				if cadena[contador] == "|":
 					parte1 = cadena[:contador]
 					parte2 = cadena[contador + 1:]					
-					estado1 = verificar(parte2)
+					estado1 = verificar(parte2)					
 					if estado == True and estado1 == True:
 						contador += len(parte2)
 						return True
@@ -530,22 +530,23 @@ def verificar(cadena):
 
 			try:
 				if cadena[contador] == "(":
-					subcadena = ""
-					aux = contador + 1
-					temp = 0
-					while cadena[aux] != ")" or temp != -1:	
 
-						if cadena[aux] == "(":
-							temp += 1
-						if cadena[aux] == ")":
-							temp -= 1
-						if temp == -1:
-							break
-						subcadena += cadena[aux]
+					subcadena = ""
+					aux = contador
+					abrir = 0
+					cerrar = 0
+					while cerrar < abrir + 1:						
 						aux += 1
-					contador = aux + 1
-					estado2 = verificar(subcadena)
-					if estado == True and estado2 == True:
+						if cadena[aux] == "(":
+							abrir += 1
+						if cadena[aux] == ")":
+							cerrar += 1			
+							if cerrar == abrir + 1:
+								break		
+						subcadena += cadena[aux]															
+					contador = aux				
+					estado2 = verificar(subcadena)					
+					if estado == True and estado2 == True:						
 						#aqui se verifica si despues del parentesis hay otro operador
 						try:
 							if cadena[contador + 1] == "*":
