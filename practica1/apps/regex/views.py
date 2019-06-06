@@ -228,8 +228,7 @@ class Algoritmo:
 					contador += 1					
 				else:
 					estados = self.concatenacion2( cadena[contador], qfinal )	
-					qinicial = estados[0]				
-					qfinal = estados[1]	
+					qinicial = estados[0]									
 					print(qfinal)
 					contador += 1
 					print(estados)									
@@ -461,15 +460,14 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(valores)		
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
-<<<<<<< HEAD
+
 
 	g= Graph(format='png')
 	gautomata.format = 'png'
 	gautomata.render(view=True)	
 
-=======
+
 		
->>>>>>> 30b7dd33a9a34f56884b30772c8953f8c07a1a8e
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
