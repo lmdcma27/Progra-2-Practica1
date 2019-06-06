@@ -30,7 +30,7 @@ def registro(request):
     else:
         form = formulario()
     
-    return render(request,'registro/formulario.html', {'form': form})
+    return render(request,'registro/formular.html', {'form': form})
 
 def validacion(request):
     x = "Tu cuenta ha sido validada con exito."

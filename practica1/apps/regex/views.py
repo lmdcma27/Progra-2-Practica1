@@ -466,8 +466,8 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
 
-	g = Graph(format='png')
-	gautomata.format = 'svg'
+	g= Graph(format='png')
+	gautomata.format = 'png'
 	gautomata.render(view=True)	
 
 	gautomata = Digraph(comment='grafo del automata')
@@ -482,9 +482,7 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
 
-	g = Graph(format='png')
-	gautomata.format = 'png'
-	gautomata.render(view=True)		
+		
 
 def verificar(cadena):
 	estado = True
@@ -581,10 +579,20 @@ def verificar(cadena):
 
 
 def expresiones(request):
+	objetos = Regex.objects.all()
+	lista = []
+	for objeto in objetos:
+		lista.append(objeto.regex)
+		
 	form = regexform(request.POST)
 	if request.method == 'POST':
-		if form.is_valid():
-			if verificar( request.POST['regex']) == True:
+		if request.POST['regex'] in lista:
+			expresionR = Algoritmo()
+			eR = expresionR.convertir(request.POST['regex'])
+			grafica(eR[0], eR[1])
+
+		if form.is_valid():			
+			if verificar( request.POST['regex']) == True:				
 				form.save()
 				expresionR = Algoritmo()
 				eR = expresionR.convertir(request.POST['regex'])
