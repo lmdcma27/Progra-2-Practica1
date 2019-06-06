@@ -244,8 +244,7 @@ class Algoritmo:
 					if cadena[contador] == "+":						
 						estados = self.prueba2(cadena[contador - 1], qinicial, qfinal)						                             
 						contador += 1			
-				except IndexError:
-					print("cadena terminada")
+				except IndexError:					
 					contador += 1
 					break
 													
@@ -254,17 +253,14 @@ class Algoritmo:
 				
 					#se genera una particion en la cadena					
 					parte1 = cadena[:contador]							
-					parte2 = cadena[contador + 1:]		
-					print(parte1, parte2)				
+					parte2 = cadena[contador + 1:]											
 					#la parte1 ya esta resuelta, se resuelve la parte2, entonces llamamos a la función leercadena
-					estados1 = self.leercadena(parte2)		
-					print(estados1)									
+					estados1 = self.leercadena(parte2)												
 					estados = self.barra2(inicial, qfinal, estados1[0], estados1[1] )							
 					inicial = estados[0]
 					qfinal = estados[1]		
 					contador += estados1[2] + 1		
-			except IndexError:
-				print("la cadena o subcadena se ha leido")			
+			except IndexError:							
 				break
 
 			try: 
@@ -370,7 +366,6 @@ class Algoritmo:
 			for q in self.transiciones[(estadoi, letra)]:
 				self.alcanzar.append(q)
 				self.Alcanzar(q, "vacio")
-			print(self.alcanzar)
 		else:
 			pass
 
@@ -592,7 +587,7 @@ def expresiones(request):
 				form.save()
 				expresionR = Algoritmo()
 				eR = expresionR.convertir(request.POST['regex'])
-				'''grafica(eR[0], eR[1])'''
+				grafica(eR[0], eR[1])
 			else:
 				return HttpResponse("La expresión ingresada es inválida, para mas ayuda puede consultar la gramática de las expresiones")
 	return render( request, 'regex/expresiones.html', {'form': form})
