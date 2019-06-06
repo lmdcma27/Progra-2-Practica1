@@ -592,7 +592,7 @@ def expresiones(request):
 				form.save()
 				expresionR = Algoritmo()
 				eR = expresionR.convertir(request.POST['regex'])
-				grafica(eR[0], eR[1])
+				'''grafica(eR[0], eR[1])'''
 			else:
 				return HttpResponse("La expresión ingresada es inválida, para mas ayuda puede consultar la gramática de las expresiones")
 	return render( request, 'regex/expresiones.html', {'form': form})
