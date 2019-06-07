@@ -9,15 +9,31 @@
 {{ form.as_p }}
 <button type="submit" class="btn btn-primary"> Validar Expresión </button>
 </form>
+<<<<<<< HEAD
 <a class="btn btn-primary" href="{% url 'lexer'%}"> <font color="white"> Ir al analizador léxico </font></a>
+=======
+
+
+<a class="btn btn-primary" href="{% url 'lexer'%}"> <font color="white"> Ir al analizador léxico </font></a>
+
+<a class="btn btn-primary" href="{% url 'lexer'%}"> <font color="green"> Ir al analizador léxico </font></a>
+
+<br>
+>>>>>>> 6b71641264a194149c7d76da5c113f7a3c1bf65c
 <br>
 <a class="btn btn-primary" href="{% url 'gramatica'%}"> <font color="orange">Ver Gramática </font></a> 
 <br>
+<<<<<<< HEAD
 {% load static from staticfiles  %}
 <img src="{% static 'Digraph.gv.png' %}">
  {% endblock %}
 
 
 
+=======
+{% load static %}
+<img src="{% static '/Digraph.gv.png' %}">
+{% endblock %}
+>>>>>>> 6b71641264a194149c7d76da5c113f7a3c1bf65c
 
 
