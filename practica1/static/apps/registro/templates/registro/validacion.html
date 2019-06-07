@@ -1,0 +1,14 @@
+
+{% extends 'base/base.html' %}
+{% block title %}
+Valicación
+{% endblock %}
+
+{% block content %}
+<form method='get'>
+{% csrf_token %}
+{{ x }}
+<a class="btn btn-primary" href="{% url 'acceso' %}"> <font color="blue">Ir al LOGIN </font></a>
+</form>
+
+{% endblock %}

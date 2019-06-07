@@ -23,11 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_w6u!xg!403w&tpn@7_negwj1r&&wzq7#m5c2hh83478+&qg6='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-<<<<<<< HEAD
+
 DEBUG = True
-=======
-DEBUG = True 
->>>>>>> 30b7dd33a9a34f56884b30772c8953f8c07a1a8e
+
 
 ALLOWED_HOSTS = ['*']
 EMAIL_HOST = 'smtp.gmail.com'
@@ -133,10 +131,10 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
-STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [ os.path.join(BASE_DIR, ''), ]
 
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/' 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)))

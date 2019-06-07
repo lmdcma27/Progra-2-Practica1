@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content%}
+
+<h1> Gramática </h1>
+<p> La gramática para las expresiones regulares es G = { V, E, R, S} donde V 
+= {A}, el conjunto de variables, E = {a, ..., z, A, ..., Z, 0, ..., 9} el conjunto
+de terminales, R el conjunto de producciones y S = A la variable inicial. </p>
+<h2> Las producciones son las siguientes: </h2>
+ 
+<h4> A -> (A)*A </h4> <h4> A -> (A)+A </h4> <h4> A -> (A)A </h4>  
+<h4> A -> (A)*|A </h4> <h4> A -> (A)+|A </h4> <h4> A -> (A)|A </h4>
+<h4> A -> (A)* </h4> <h4> A -> (A)+ </h4> <h4> A -> (A) </h4> 
+<h4> A -> #*A </h4> <h4> A -> #+A </h4> <h4> A -> #A </h4> 
+<h4> A -> #*|A </h4> <h4> A -> #+|A </h4> <h4> A -> #|A </h4> 
+<h4> A -> #* </h4> <h4> A -> #+ </h4> <h4> A -> # </h4> 
+<h4> Donde # representa un elemnto de E.</h4>
+{% endblock %}

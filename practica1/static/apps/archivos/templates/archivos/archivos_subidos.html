@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+<h2> Archivos Subidos </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Nombre </th>
+            <th> Archivos </th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for a in arch %}
+    {% if a.propietario.nombre == n %}
+        <tr>
+            <td> {{ a.archivo.name }} </td>
+            <td> 
+            <a href="{% url 'editar' a.archivo.name %}" title="Editar Archivo" class="btn btn-primary btn-sm" target="_blank">
+            Editar
+            </a>
+             </td>
+        </tr>
+    {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

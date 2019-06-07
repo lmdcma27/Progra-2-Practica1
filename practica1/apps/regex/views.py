@@ -184,7 +184,7 @@ class Algoritmo:
 		estado = "q" + str(self.contador[0])		
 		self.determinar( qinicial, "vacio", estado)
 		self.contador[0] += 1
-		del self.transiciones[(qinicial, A)]
+		del self.transiciones[(qinicial, A)]		
 		self.determinar( estado, A, "q" + str(self.contador[0]) )		
 		self.determinar( "q" + str(self.contador[0]), "vacio", estado )
 		self.determinar( "q" + str(self.contador[0]), "vacio", qfinal)
@@ -229,17 +229,15 @@ class Algoritmo:
 				else:
 					estados = self.concatenacion2( cadena[contador], qfinal )	
 					qinicial = estados[0]				
-					qfinal = estados[1]	
-					print(qfinal)
-					contador += 1
-					print(estados)									
+					qfinal = estados[1]					
+					contador += 1														
 
 				try:
 					if cadena[contador] == "*":										
 						estados = self.prueba1(cadena[contador - 1], qinicial, qfinal)						
 						contador += 1
 				except IndexError:
-					print("cadena terminada")
+				
 					contador += 1
 					break
 					
@@ -248,7 +246,7 @@ class Algoritmo:
 						estados = self.prueba2(cadena[contador - 1], qinicial, qfinal)						                             
 						contador += 1			
 				except IndexError:
-					print("cadena terminada")
+				
 					contador += 1
 					break
 													
@@ -257,17 +255,15 @@ class Algoritmo:
 				
 					#se genera una particion en la cadena					
 					parte1 = cadena[:contador]							
-					parte2 = cadena[contador + 1:]		
-					print(parte1, parte2)				
+					parte2 = cadena[contador + 1:]										
 					#la parte1 ya esta resuelta, se resuelve la parte2, entonces llamamos a la función leercadena
-					estados1 = self.leercadena(parte2)		
-					print(estados1)									
+					estados1 = self.leercadena(parte2)														
 					estados = self.barra2(inicial, qfinal, estados1[0], estados1[1] )							
 					inicial = estados[0]
 					qfinal = estados[1]		
 					contador += estados1[2] + 1		
 			except IndexError:
-				print("la cadena o subcadena se ha leido")			
+			
 				break
 
 			try: 
@@ -275,21 +271,20 @@ class Algoritmo:
 				if cadena[contador] == "(":
 
 					subcadena = ""
-					aux = contador + 1
+					aux = contador
 					abrir = 0
 					cerrar = 0
-					while cadena[aux] != ")":
-							
+					while cerrar < abrir + 1:						
+						aux += 1
 						if cadena[aux] == "(":
 							abrir += 1
 						if cadena[aux] == ")":
-							cerrar += 1
-						if cerrar == abrir + 1:
-							break
-						subcadena += cadena[aux]
-						aux += 1
+							cerrar += 1			
+							if cerrar == abrir + 1:
+								break		
+						subcadena += cadena[aux]															
 
-					contador = aux + 1										
+					contador = aux + 1									
 					estados = self.leercadena(subcadena) 																							
 					qinicial1 = estados[0]
 					qfinal1 = estados[1]	
@@ -356,8 +351,7 @@ class Algoritmo:
 					
 			except IndexError:
 				pass
-		try:
-
+		try:			
 			if contador >= len(cadena):										
 				return inicial, qfinal, contador	
 		except UnboundLocalError:
@@ -372,18 +366,16 @@ class Algoritmo:
 		if (estadoi, letra) in self.transiciones:			
 			for q in self.transiciones[(estadoi, letra)]:
 				self.alcanzar.append(q)
-				self.Alcanzar(q, "vacio")
-			print(self.alcanzar)
+				self.Alcanzar(q, "vacio")						
 		else:
 			pass
 
 
 
-	def generar_estados(self, conjunto_estados, alf):
-		
+	def generar_estados(self, conjunto_estados, alf):		
 		for q in conjunto_estados:						
 			for letra in alf:
-				self.Alcanzar(q, letra)								
+				self.Alcanzar(q, letra)												
 				if self.alcanzar == []:
 					pass
 				else:					
@@ -432,8 +424,8 @@ class Algoritmo:
 		es = self.leercadena(cadena)
 		#se crea el estado inicial		
 		self.Alcanzar( es[0], "vacio" )
-		estado_inicial = self.alcanzar		
-		estado_inicial.append(es[0])
+		estado_inicial = self.alcanzar				
+		estado_inicial.append(es[0])		
 		self.alcanzar = []			
 		#se llama a la funcion generadora de estados		
 		self.generar_estados( estado_inicial , alfabeto )				
@@ -461,21 +453,22 @@ def grafica(diccionario, conjunto_aceptacion):
 			gautomata.node(valores)		
 			gautomata.node(claves[0])		
 		gautomata.edge(claves[0], valores, claves[1])		
-<<<<<<< HEAD
+
 
 	g= Graph(format='png')
 	gautomata.format = 'png'
-	gautomata.render(view=True)	
+	gautomata.render()	
 
-=======
+
 		
->>>>>>> 30b7dd33a9a34f56884b30772c8953f8c07a1a8e
+
 	gautomata = Digraph(comment='grafo del automata')
 
 	for claves, valores in diccionario.items():
 		if valores in conjunto_aceptacion:											
-			gautomata.attr('node', shape='doublecircle')
+			gautomata.attr('node', shape='doublecircle')		
 			gautomata.node(valores)		
+			gautomata.attr('node', shape='circle')
 		else:
 			gautomata.attr('node', shape='circle')
 			gautomata.node(valores)		
@@ -498,7 +491,8 @@ def verificar(cadena):
 			return False
 		if cadena.count("(") != cadena.count(")"):
 			return False
-
+		if cadena.count(" ") > 0:
+			return False
 		while contador < len(cadena):
 			if cadena[contador] in alfanumerico:
 				try:
@@ -527,7 +521,7 @@ def verificar(cadena):
 				if cadena[contador] == "|":
 					parte1 = cadena[:contador]
 					parte2 = cadena[contador + 1:]					
-					estado1 = verificar(parte2)
+					estado1 = verificar(parte2)					
 					if estado == True and estado1 == True:
 						contador += len(parte2)
 						return True
@@ -540,22 +534,23 @@ def verificar(cadena):
 
 			try:
 				if cadena[contador] == "(":
-					subcadena = ""
-					aux = contador + 1
-					temp = 0
-					while cadena[aux] != ")" or temp != -1:	
 
-						if cadena[aux] == "(":
-							temp += 1
-						if cadena[aux] == ")":
-							temp -= 1
-						if temp == -1:
-							break
-						subcadena += cadena[aux]
+					subcadena = ""
+					aux = contador
+					abrir = 0
+					cerrar = 0
+					while cerrar < abrir + 1:						
 						aux += 1
-					contador = aux + 1
-					estado2 = verificar(subcadena)
-					if estado == True and estado2 == True:
+						if cadena[aux] == "(":
+							abrir += 1
+						if cadena[aux] == ")":
+							cerrar += 1			
+							if cerrar == abrir + 1:
+								break		
+						subcadena += cadena[aux]															
+					contador = aux				
+					estado2 = verificar(subcadena)					
+					if estado == True and estado2 == True:						
 						#aqui se verifica si despues del parentesis hay otro operador
 						try:
 							if cadena[contador + 1] == "*":
@@ -591,14 +586,14 @@ def expresiones(request):
 			eR = expresionR.convertir(request.POST['regex'])
 			grafica(eR[0], eR[1])
 
-		if form.is_valid():			
+		if form.is_valid():						
 			if verificar( request.POST['regex']) == True:				
 				form.save()
 				expresionR = Algoritmo()
 				eR = expresionR.convertir(request.POST['regex'])
 				grafica(eR[0], eR[1])
 			else:
-				return HttpResponse("La expresión ingresada es inválida, para mas ayuda puede consultar la gramática de las expresiones")
+				return HttpResponse("La expresión ingresada es inválida, para mas ayuda puede consultar la gramática de las expresiones. Además no se aceptan espacios vacios")
 	return render( request, 'regex/expresiones.html', {'form': form})
 
 

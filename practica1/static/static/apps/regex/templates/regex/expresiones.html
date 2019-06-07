@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<h1> Expresiones Regulares </h1>
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-primary"> Validar Expresión </button>
+</form>
+<a class="btn btn-primary" href="{% url 'lexer'%}"> <font color="white"> Ir al analizador léxico </font></a>
+
+<a class="btn btn-primary" href="{% url 'lexer'%}"> <font color="orange"> Ir al analizador léxico </font></a>
+
+<br>
+<br>
+<a class="btn btn-primary" href="{% url 'gramatica'%}"> <font color="orange">Ver Gramática </font></a> 
+<br>
+{% load static %}
+<img src="{% static '/Digraph.gv.png' %}">
+ {% endblock %}
+
+
+
+
+

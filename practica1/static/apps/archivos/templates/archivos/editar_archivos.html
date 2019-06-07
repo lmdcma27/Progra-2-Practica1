@@ -1,0 +1,120 @@
+
+{% block header %}
+<h1> Editar </h1>
+<form method='post'>
+ {% csrf_token %}
+ {{ form.as_p }}
+<button type="submit"> Guardar Cambios</button> 
+</form>
+<input type="button" value="Realizar Análisis Léxico" onclick="Mostrar()"> 
+<p></p>
+<p></p>
+
+<ol id="oculto1">
+{% for retazo1 in lista1%}
+    <li> {{ retazo1 }} </li>
+{% endfor %}
+</ol>
+
+<ol id="oculto2">
+{% for retazo2 in lista2%}
+    <li> {{ retazo2 }} </li>
+{% endfor %}
+</ol>
+<form>
+     <div id="parrafo"></div>
+</form>
+
+<div id="imagenes">
+
+{% for cientifico in cientificos %}
+    {% if cientifico in string %}
+        {% if cientifico == "Newton" %}
+        <div align="center">  <img src="https://www.ecured.cu/images/e/e3/Isaac_newton.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Isaac Newton </div> </br>
+        {% endif %}
+        {% if cientifico == "Euler" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Leonhard_Euler_2.jpg" width="80" height="80"></div> </br>
+            <div align="center"> Leonard Euler </div> </br>
+        {% endif %}
+        {% if cientifico == "Hilbert" %}
+        <div align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Leonhard_Euler_2.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> David Hilbert </div> </br>
+        {% endif %}
+        {% if cientifico == "Turing" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Allan Turing </div> </br>
+        {% endif %}
+        {% if cientifico == "Fermat" %}
+        <div align="center"> <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Pierre_de_Fermat.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Pierre de Fermat </div> </br>
+        {% endif %}
+        {% if cientifico == "Fermat" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Pierre_de_Fermat.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Pierre de Fermat </div> </br>
+        {% endif %}
+        {% if cientifico == "Pitágoras" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Pythagoras_in_the_Roman_Forum%2C_Colosseum.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Pitágoras de Samos </div> </br>
+        {% endif %}
+
+        {% if cientifico == "Boole" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/George_Boole.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> George Boole </div> </br>
+        {% endif %}
+        {% if cientifico == "Cantor" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Georg_Cantor2.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Georg Ferdinand Ludwig Philipp Cantor  </div> </br>
+        {% endif %}
+
+         {% if cientifico == "Perelman" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/4/43/Perelman%2C_Grigori_%281966%29.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Grigori Perelmán  </div> </br>
+        {% endif %}
+        {% if cientifico == "Einstein" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Albert Einstein </div> </br>
+        {% endif %}
+
+        {% if cientifico == "Galileo" %}
+        <div align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Justus_Sustermans_-_Portrait_of_Galileo_Galilei%2C_1636.jpg" width="80" height="80"> </div> </br>
+            <div align="center"> Galileo Galilei </div> </br>
+        {% endif %}
+
+    {% endif %}
+{% endfor %}
+</div>
+
+    <script>
+        var texto = document.getElementById("parrafo");
+        var fotos = document.getElementById("imagenes"); 
+        var lista1 = document.getElementsByTagName("li");
+        longitud = lista1.length/2;
+
+        for(i=0;i< longitud ;i++){
+            cadena1 = lista1[longitud + i].innerHTML
+            cadena2 = lista1[i].innerHTML
+            cadena2 = lista1[i].innerHTML.fontcolor(cadena1);
+            texto.innerHTML = texto.innerHTML + " " + cadena2;    
+        }
+
+        var ocultar1 = document.getElementById('oculto1');
+        ocultar1.style.display = 'none';
+        var ocultar2 = document.getElementById('oculto2');
+        ocultar2.style.display = 'none';
+        texto.style.display = 'none';
+        fotos.style.display = 'none';
+
+        var Mostrar = function(){
+          texto.style.display = 'block'; 
+          fotos.style.display = 'block'; 
+           
+        }
+
+
+
+    </script>
+
+
+
+ {% endblock %}
