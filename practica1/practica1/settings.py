@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.archivos',
     'apps.regex', 
     'apps.lexer', 
+    'apps.tabla', 
 ]
 
 MIDDLEWARE = [

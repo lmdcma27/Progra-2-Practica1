@@ -256,8 +256,8 @@ class Algoritmo:
 					#se genera una particion en la cadena					
 					parte1 = cadena[:contador]							
 					parte2 = cadena[contador + 1:]										
-					#la parte1 ya esta resuelta, se resuelve la parte2, entonces llamamos a la función leercadena
-					estados1 = self.leercadena(parte2)														
+					#la parte1 ya esta resuelta, se resuelve la parte2, entonces llamamos a la función leercadena														
+					estados1 = self.leercadena(parte2)																							
 					estados = self.barra2(inicial, qfinal, estados1[0], estados1[1] )							
 					inicial = estados[0]
 					qfinal = estados[1]		
@@ -282,12 +282,14 @@ class Algoritmo:
 							cerrar += 1			
 							if cerrar == abrir + 1:
 								break		
-						subcadena += cadena[aux]															
-
-					contador = aux + 1									
-					estados = self.leercadena(subcadena) 																							
-					qinicial1 = estados[0]
-					qfinal1 = estados[1]	
+						subcadena += cadena[aux]																												
+					estados = self.leercadena(subcadena) 																											
+					if contador == 0:
+						inicial = estados[0]
+					else:
+						qinicial1 = estados[0]
+					qfinal1 = estados[1]						
+					contador = aux + 1							
 					try:
 						self.concatenacion3(qfinal, qinicial1)						
 					except UnboundLocalError:
@@ -301,11 +303,18 @@ class Algoritmo:
 								qfinal = estados[1]
 								contador += 1
 							except UnboundLocalError:
-								qfinal  = estados[1]
-								estados = self.clausura2(qfinal, qinicial1, qfinal1)															
-								qinicial = estados[0]							
-								qfinal = estados[1]
-								contador += 1													
+								try:
+									qfinal  = estados[1]
+									estados = self.clausura2(qfinal, inicial, qfinal1)															
+									qinicial = estados[0]							
+									qfinal = estados[1]
+									contador += 1					
+								except UnboundLocalError:
+									qfinal  = estados[1]
+									estados = self.clausura2(qfinal, qinicial1, qfinal1)															
+									qinicial = estados[0]							
+									qfinal = estados[1]
+									contador += 1					
 
 						elif cadena[contador] == "+":
 							try:
@@ -314,50 +323,37 @@ class Algoritmo:
 								qfinal = estados[1]
 								contador += 1
 							except UnboundLocalError:
-								qfinal  = estados[1]
-								estados = self.suma2(qfinal, qinicial1, qfinal1)
-								qinicial = estados[0]
-								qfinal = estados[1]
-								contador += 1	
+								try:
+									qfinal  = estados[1]
+									estados = self.suma2(qfinal, inicial, qfinal1)
+									qinicial = estados[0]
+									qfinal = estados[1]
+									contador += 1	
+								except UnboundLocalError:
+									qfinal  = estados[1]
+									estados = self.suma2(qfinal, qinicial1, qfinal1)
+									qinicial = estados[0]
+									qfinal = estados[1]
+									contador += 1									
 						else:
 							qfinal = estados[1]
 					except IndexError:																	
 						break
 
-					'''else:
-						qinicial = estados[0]
-						print(qinicial)
-						qfinal = estados[1]
-						try:
-							if cadena[contador] == "*":
-								print(qfinal)
-								estados = self.clausura2(qfinal, estados[0], estados[1])
-								qfinal = estados[1]
-								print(qfinal)
-								contador += 1
-						except IndexError:
-							print("Cadena terminada")
-							break
-						
-						try:
-							if cadena[contador] == "+":						
-								estados = self.suma2(qfinal, estados[0], estados[1])
-								qfinal = estados[1]
-								contador += 1
-						except IndexError:
-							print("Cadena terminada")
-							break'''
-
-					
+								
 			except IndexError:
-				pass
+				pass		
 		try:			
 			if contador >= len(cadena):										
 				return inicial, qfinal, contador	
 		except UnboundLocalError:
-			if contador >= len(cadena):											
-				return qinicial, qfinal, contador	
-			
+			try:
+				if contador >= len(cadena):											
+					return qinicial, qfinal, contador			
+			except UnboundLocalError:
+				if contador >= len(cadena):											
+					return inicial, qfinal1, contador	
+				
 
 
 
@@ -392,9 +388,7 @@ class Algoritmo:
 						t = "q" + str( self.estados_generales.index(self.alcanzar) )	
 
 					try:
-						if self.trans[(s, letra)] == s:
-
-							self.trans[(s, letra)] = t
+						if self.trans[(s, letra)] == t:							
 							self.alcanzar = []						
 							break												
 					except KeyError:

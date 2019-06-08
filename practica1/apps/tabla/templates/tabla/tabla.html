@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{% csrf_token%}
+<form method='post'>
+{% csrf_token%}
+{{ form }}
+<button type="submit" class="btn btn-primary"> Generar tabla </button>
+</form>
+{% endblock %}

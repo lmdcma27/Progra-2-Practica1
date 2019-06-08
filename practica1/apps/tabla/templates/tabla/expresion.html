@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<form method=get>
+{% csrf_token %}
+<h1> Funcion de Transición </h1>
+<table class="egt">
+{% for f in lista %}
+  <tr>
+  {% for el in f %}
+    <td> {{el}} </td> 
+    <td>  </td> 
+    <td>  </td> 
+    <td>  </td> 
+     <td>  </td>
+   {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+<h2> Estados de Aceptacion </h2>
+{{ er }}
+
+</form>
+
+{% endblock  %}

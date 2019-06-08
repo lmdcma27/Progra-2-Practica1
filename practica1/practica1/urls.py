@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include ('apps.archivos.urls')),    
     path('', include ('apps.regex.urls')),
     path('', include ('apps.lexer.urls')),
+    path('', include ('apps.tabla.urls')),
 ]   
 
 if settings.DEBUG:
